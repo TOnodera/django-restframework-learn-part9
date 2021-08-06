@@ -1,14 +1,16 @@
-FROM python:3.8-alpine
+FROM python:3.8.3-buster
 
-RUN apk update && apk add --no-cache bash build-base mariadb-connector-c-dev linux-headers git nodejs npm 
-RUN pip install flake8 autopep8 pymysql uwsgi mysqlclient pyyaml
-RUN pip install Django==2.2.* djangorestframework==3.12.* 
-RUN pip install djangorestframework-simplejwt==4.6.*
-#RUN pip install djoser==2.1.*
+RUN apt-get update && apt-get install -y bash git nodejs npm 
+
+RUN pip install flake8 autopep8 pymysql uwsgi mysqlclient pyyaml \ 
+    && pip install Django==2.2.* djangorestframework==3.12.* \
+    && pip install djangorestframework-simplejwt==4.6.* \
+    && pip install djoser==2.1.*
+    
 RUN npm i -g @vue/cli
 
 WORKDIR /home/python/app
-RUN adduser -u 1000 -D python && \
+RUN useradd -u 1000 -o python && \
     chown -R python:python /home/python
 
 # ENTRYPOINT [ "/bin/bash","/home/python/app/docker/python/start.sh" ]
