@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "@/store";
 
 const api = axios.create({
-  baseURL: process.env.VUE_APP_ROOT_API,
+  baseURL: "http://localhost:8000/api/v1",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
