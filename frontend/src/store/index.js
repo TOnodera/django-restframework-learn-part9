@@ -46,9 +46,54 @@ const authModule = {
   },
 };
 
+//グローバルメッセージ
+const messageModule = {
+  namespaced: true,
+  state: {
+    error: "",
+    warnings: [],
+    info: "",
+  },
+  mutations: {
+    set(state, payload) {
+      if (payload.error) {
+        state.error = payload.error;
+      }
+      if (payload.warnings) {
+        state.warnings = payload.warnings;
+      }
+      if (payload.info) {
+        state.info = payload.info;
+      }
+    },
+    clear(state) {
+      state.error = "";
+      state.warnings = [];
+      state.info = "";
+    },
+  },
+  actions: {
+    setErrorMessage(context, payload) {
+      context.commit("clear");
+      context.commit("set", { info: payload.message });
+    },
+    setWarningMessages(context, payload) {
+      context.commit("clear");
+      context.commit("set", { info: payload.messages });
+    },
+    setInfoMessage(context, payload) {
+      context.commit("clear");
+      context.commit("set", { info: payload.message });
+    },
+    clearMessages(context) {
+      context.commit("clear");
+    },
+  },
+};
+
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    auth: authModule,
+    message: messageModule,
+  },
 });
