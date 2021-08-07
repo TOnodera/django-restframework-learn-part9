@@ -38,7 +38,9 @@
 		"mhutchie.git-graph",
 		"ms-python.vscode-pylance",
 		"bibhasdn.django-html",
-		"batisteo.vscode-django"
+		"batisteo.vscode-django",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
