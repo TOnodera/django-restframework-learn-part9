@@ -4,8 +4,7 @@ RUN apt-get update && apt-get install -y bash git nodejs npm
 
 RUN pip install flake8 autopep8 pymysql uwsgi mysqlclient pyyaml \ 
     && pip install Django==2.2.* djangorestframework==3.12.* \
-    && pip install djangorestframework-simplejwt==4.6.* \
-    && pip install djoser==2.1.*
+    && pip install djangorestframework-simplejwt==4.6.* djoser==2.1.* django-cors-headers==3.7.*
     
 RUN npm i -g @vue/cli
 

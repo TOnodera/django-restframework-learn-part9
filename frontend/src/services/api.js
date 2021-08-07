@@ -9,7 +9,6 @@ const api = axios.create({
     "X-Requested-With": "XMLHttpRequest",
   },
 });
-
 // 共通前処理
 api.interceptors.request.use(
   (config) => {
